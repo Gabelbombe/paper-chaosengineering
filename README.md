@@ -41,4 +41,19 @@ We can also put this into less scientific terminology: __let's intentionally bre
 
 Let's try an example. Let's say you wanted to know what would happen, if for some reason your database becomes suddenly unavailable for whatever reason? You can hypothesize that your web application would stop serving requests and immediately begin returning errors. To simulate this even we could block access to our database server either by instituting a bad port, garbage credentials or some other self imposed means. Afterwards however, we observe that the application seems to take an unreasonable amount of time to respond. With investigation we find the root cause _a misconfiguration in our timeouts_ and are able to fix it in a matter of seconds.
 
-As this example demonstrates fairly clearly, Chaos Engineering makes for effective resilience testing. Besides, it's a ton of fun...
+As this example fairly clearly demonstrates, Chaos Engineering makes for effective resilience testing. Besides the fact that it's a ton of fun, you get to tell people you now break stuff for a living! Who doesn't love breaking stuff?
+
+
+#### How do we get started?
+
+Netflix went the extra mile and built several autonomous agents, the so-called "monkeys". These purposefully inject failures into your ecosystem to create different types of outages or arbitrarily bad data. As an example, Chaos Monkey will randomly terminate virtual machines which simulates server outages. Latency Monkey will induces artificial delays in API calls to simulate service degradation. Then there is my all time favorite, Chaos Gorilla. He is programmed to take down an entire datacenter. Together they form a fair portion of the [the Simian Army](https://queue.acm.org/detail.cfm?id=2499552).
+
+While the Simian Army is a fairly novel concept, we don't necessarily need to automate our experiments to run continuously when we're just getting started. Honestly it's best (IE, sanest) to introduce your company to the concept of Chaos Engineering by starting small and in measurable increments.
+
+This really means that instead of wreaking havoc on our production system from day one, we would be wise in attempting encapsulated experiments in an isolated staging environment (if you don't have a pre-production environment yet, this would be the time to start creating one!). While your two environments will be different in more or less subtle ways, any resiliency testing is better than no resiliency testing! Later, as we start to gain confidence begin introducing more experiments (or more preferably, all of them) in production. __Remember:__ Chaos Engineering is focused on controlled failure-injection. You are the one making the rules here.
+
+The purpose of our chaos experiments is to simulate _disaster conditions_. Thought his might sound like a difficult task (and yes it requires a creative touch) in the beginning it's easier to focus on availability (or rather the lack of) by injecting failures so that fragments of our infrastructure become unavailable. Intentionally terminating machine clusters, killing workers, dropping database tables, shearing access to internal and external services... You know, all the fun stuff! We will lean a lot about the the inherent coupling of our systems and discover the subtle dependancies tying it together that we would normally overlook.
+
+Later, we would want to look at  simulating other events capable of disrupting our _steady state_, like high latency caused by slow network performance. These experiments are generally harder to pull off and often require special tooling, though the takeaways tend to be amplified by the extra effort.
+
+Whatever you decide to do, I can promise that you will be surprised how much you can learn from chaos.
