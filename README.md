@@ -73,4 +73,4 @@ Briefly, here are the steps involved in conducting chaos experiments. This list 
 
  4. For evert flaw uncovered compile a counter-measure list. Don't worry about immediate implementation for fixes, we are compiling a log at this point! Add any follow-up items to your issue tracker.
 
-Rinse and repeat, we should be running our experiments on a regular basis (I recommend quarterly at the minimum) to detect regressions as well as new problems. Don't forget to bring your spreadsheet. ;)
+Rinse and repeat, we should be running our experiments on a regular basis (I recommend quarterly at the minimum) to detect regressions as well as new problems. Don't forget to bring your spreadsheet. :wink:
