@@ -38,3 +38,7 @@ As a Chaos Engineer, you are testing a systems ability to _survive and thrive_ b
  4. Test the hypothesis by comparing the steady state of the control group and the experimental group. The smaller the differences, the more confidence we have that the system has attained a acceptable state of resiliency.
 
 We can also put this into less scientific terminology: __let's intentionally break shit, compare broken and battered with expected impact and correct any problems uncovered this way.__ This creates a more hardy _Disaster Recovery_ plan with tangible results that we can use in the implementation of a much more robust system.
+
+Let's try an example. Let's say you wanted to know what would happen, if for some reason your database becomes suddenly unavailable for whatever reason? You can hypothesize that your web application would stop serving requests and immediately begin returning errors. To simulate this even we could block access to our database server either by instituting a bad port, garbage credentials or some other self imposed means. Afterwards however, we observe that the application seems to take an unreasonable amount of time to respond. With investigation we find the root cause _a misconfiguration in our timeouts_ and are able to fix it in a matter of seconds.
+
+As this example demonstrates fairly clearly, Chaos Engineering makes for effective resilience testing. Besides, it's a ton of fun...
