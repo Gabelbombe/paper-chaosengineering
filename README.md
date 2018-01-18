@@ -14,4 +14,4 @@ Okay this sounds sweet right? But how? How can you make sure you’re ready for 
 
 The first thing(s) that we'll need to do is to isolate and identify the problems that may arise in a production-esque environment. Only then will you be able to address systemic weaknesses and make our systems fault-tolerant.
 
-This is where __Chaos Engineering__ comes in.
+This is where [Chaos Engineering](http://principlesofchaos.org/) comes in.
