@@ -29,7 +29,7 @@ The concept of Chaos Engineering is that, rather that waiting for things to brea
 As a Chaos Engineer, you are testing a systems ability to _survive and thrive_ by simulating potential errors (IE, failure modes) in a series of controlled experiments. These experiments typically consist of the following steps:
 
 
- 1. Define your systems normal behavior _its "steady state"_ based on measurable output like through metrics such as performance, memory, basic activity, persistence and error metrics (I've detailed these in another paper [Redis Health](https://github.com/ehime/paper-redishealth/blob/master/section/metrics.md) that should be applicable here).
+ 1. Define your systems normal behavior _its "steady state"_ based on measurable output through metrics such as performance, memory, basic activity, persistence and error metrics (I've detailed these in another paper [Redis Health](https://github.com/ehime/paper-redishealth/blob/master/section/metrics.md) that should be applicable here).
 
  2. Hypothesize about the steady state behavior of an experimental group, as compared to a stable control group.
 
