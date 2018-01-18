@@ -10,7 +10,7 @@ Or more to the point, how can you make certain that your distributed system is r
 
 We live in an imperfect world, that's just how it is... It's time to accept that and focus on things that _are_ in our sphere of control, such as creating quality products that are resilient and reactive to failures. Build software that is able to cope with both expected and unexpected results; gracefully degrade whenever necessary. As I often say __Pray for the best, while  always expecting the worst.__
 
-Okay this sounds sweet right? But how? How can you make sure you’re ready for disaster?
+Okay this sounds sweet right? But how? How can you make sure you're ready for disaster?
 
 The first thing(s) that we'll need to do is to isolate and identify the problems that may arise in a production-esque environment. Only then will you be able to address systemic weaknesses and make our systems fault-tolerant.
 
@@ -23,5 +23,18 @@ The concept of Chaos Engineering is that, rather that waiting for things to brea
 
 
  > Chaos Engineering is the discipline of experimenting on a distributed system
- > in order to build confidence in the system’s capability to withstand turbulent
+ > in order to build confidence in the system's capability to withstand turbulent
  > conditions in production.
+
+As a Chaos Engineer, you are testing a systems ability to _survive and thrive_ by simulating potential errors (IE, failure modes) in a series of controlled experiments. These experiments typically consist of the following steps:
+
+
+ 1. Define your systems normal behavior - its "steady state" - based on measurable output like through metrics such as performance, memory, basic activity, persistence and error metrics (I've detailed these in another paper [Redis Health](https://github.com/ehime/paper-redishealth/blob/master/section/metrics.md) that should be applicable here).
+
+ 2. Hypothesize about the steady state behavior of an experimental group, as compared to a stable control group.
+
+ 3. Expose the experimental group to simulated real-world events such as server crashes, malformed responses, traffic spikes or service outages.
+
+ 4. Test the hypothesis by comparing the steady state of the control group and the experimental group. The smaller the differences, the more confidence we have that the system has attained a acceptable state of resiliency.
+
+We can also put this into less scientific terminology: let's intentionally break shit, compare broken and battered with expected impact and correct any problems uncovered this way. This creates a more robust _Disaster Recovery_ plan with tangible results that we can use in the implementation of a much more solid system.
