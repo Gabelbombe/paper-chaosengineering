@@ -37,4 +37,4 @@ As a Chaos Engineer, you are testing a systems ability to _survive and thrive_ b
 
  4. Test the hypothesis by comparing the steady state of the control group and the experimental group. The smaller the differences, the more confidence we have that the system has attained a acceptable state of resiliency.
 
-We can also put this into less scientific terminology: let's intentionally break shit, compare broken and battered with expected impact and correct any problems uncovered this way. This creates a more hardy _Disaster Recovery_ plan with tangible results that we can use in the implementation of a much more robust system.
+We can also put this into less scientific terminology: __let's intentionally break shit, compare broken and battered with expected impact and correct any problems uncovered this way. This creates a more hardy _Disaster Recovery_ plan with tangible results that we can use in the implementation of a much more robust system.__
