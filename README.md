@@ -61,7 +61,7 @@ Whatever you decide to do, I can promise that you will be surprised how much you
 
 #### Plan, execute, measure, adjust
 
-Briefly, here are the steps involved in conducting chaos experiments. This list is based on my own experience after reading the excellent article [Resilience Engineering: Learning to Embrace Failure](https://queue.acm.org/detail.cfm?id=2371297):
+Briefly, here are the steps involved in conducting chaos experiments. This list is based on my own experience after reading the excellent article "[Resilience Engineering: Learning to Embrace Failure](https://queue.acm.org/detail.cfm?id=2371297)"
 
  1. Begin by planning our experiments. Compile a list of potential failure modes, how we'd attempt to simulate them and what we believe the impact will be. I recommend using a spreadsheet, as this will allow us to use pivots and look-ups.
 
