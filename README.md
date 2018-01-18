@@ -1,7 +1,7 @@
 
 # Chaos Engineering for Fun and Profit
 
-So lets say you're developing a new web application, that _Next Big Thing_ that's had everyone on the edges of their seats for. After all the tireless work you've put in, sleepless nights debugging and refining.. It's finally time to launch your service to your would be clientele. Now comes the hard question...
+So lets say you're developing a new web application, that _Next Big Thing_ that's had everyone on the edges of their seats forever. After all the tireless work you've put in, sleepless nights debugging and refining.. It's finally time to launch your service to your would be clientele. Now comes the hard question...
 
 
 #### When is your Application ready for Production?
