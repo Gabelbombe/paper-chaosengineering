@@ -57,3 +57,20 @@ The purpose of our chaos experiments is to simulate _disaster conditions_. Thoug
 Later, we would want to look at  simulating other events capable of disrupting our _steady state_, like high latency caused by slow network performance. These experiments are generally harder to pull off and often require special tooling, though the takeaways tend to be amplified by the extra effort.
 
 Whatever you decide to do, I can promise that you will be surprised how much you can learn from chaos.
+
+
+#### Plan, execute, measure, adjust
+
+Briefly, here are the steps involved in conducting chaos experiments. This list is based on my own experience after reading the excellent article [Resilience Engineering: Learning to Embrace Failure](https://queue.acm.org/detail.cfm?id=2371297):
+
+ 1. Begin by planning our experiments. Compile a list of potential failure modes, how we'd attempt to simulate them and what we believe the impact will be. I recommend using a spreadsheet, as this will allow us to use pivots and look-ups.
+
+ 2. Commit to a date. At this point we should inform all stakeholders of affected systems, especially if you anticipate any trouble for customers.
+
+ 3. Gather the whole team in front of a big screen and run through the experiments together. Make sure to record via [Webex](https://www.webex.com/) or some other system. This will be the best way to transfer knowledge, develop a shared mindset and prep newer employees who will be coming in in the future.
+
+ 4. After each experiment, log your the actual measured impact. Get this into [Confluence](https://www.atlassian.com/software/confluence), a [Runbook](https://en.wikipedia.org/wiki/Runbook) and any other tool you tend to use for knowledge transfers.
+
+ 4. For evert flaw uncovered compile a counter-measure list. Don't worry about immediate implementation for fixes, we are compiling a log at this point! Add any follow-up items to your issue tracker.
+
+Rinse and repeat, we should be running our experiments on a regular basis (I recommend quarterly at the minimum) to detect regressions as well as new problems. Don't forget to bring your spreadsheet. ;)
