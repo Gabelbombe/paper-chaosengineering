@@ -85,3 +85,14 @@ As outlined in the previously mentioned article [The Principles of Chaos Enginee
  > The [advanced] principles describe an ideal application of Chaos Engineering […]
  > The degree to which these principles are pursued strongly correlates to the confidence
  > we can have in a distributed system at scale.
+
+The main principle we're interested in today is described as follows:
+
+ > Running experiments manually is labor-intensive and ultimately unsustainable. Automate
+ > experiments and run them continuously. Chaos Engineering builds automation into the system
+ > to drive both orchestration and analysis.
+
+In short, the Principles suggestion of automating experiments (that are currently manual) to run in a continual fashion (taking out the Human error) in order to add a compounding increase of confidence in our systems. Thankfully not only does Netflix tell us what to do but gives us a remarkable tool in order to put this theory into practice, which is __Chaos Monkey__.
+
+
+#### One surly ape
