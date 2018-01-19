@@ -44,7 +44,7 @@ Let's try an example. Let's say you wanted to know what would happen, if for som
 As this example fairly clearly demonstrates, Chaos Engineering makes for effective resilience testing. Besides the fact that it's a ton of fun, you get to tell people you now break stuff for a living! Who doesn't love breaking stuff?
 
 
-#### How do we get started?
+#### So, How do we get Started?
 
 Netflix went the extra mile and built several autonomous agents, the so-called "monkeys". These purposefully inject failures into your ecosystem to create different types of outages or arbitrarily bad data. As an example, Chaos Monkey will randomly terminate virtual machines which simulates server outages. Latency Monkey will induces artificial delays in API calls to simulate service degradation. Then there is my all time favorite, Chaos Gorilla. He is programmed to take down an entire datacenter. Together they form a fair portion of the [the Simian Army](https://queue.acm.org/detail.cfm?id=2499552).
 
@@ -59,7 +59,7 @@ Later, we would want to look at  simulating other events capable of disrupting o
 Whatever you decide to do, I can promise that you will be surprised how much you can learn from chaos.
 
 
-#### Plan, execute, measure, adjust
+#### Plan, Execute, Measure then Adjust
 
 Briefly, here are the steps involved in conducting chaos experiments. This list is based on my own experience after reading the excellent article "[Resilience Engineering: Learning to Embrace Failure](https://queue.acm.org/detail.cfm?id=2371297)"
 
@@ -82,17 +82,40 @@ At this point we should have a good understanding of why we need to implement fa
 
 As outlined in the previously mentioned article [The Principles of Chaos Engineering](http://principlesofchaos.org/) there are four advanced principles that should be observed. This paper states:
 
- > The [advanced] principles describe an ideal application of Chaos Engineering […]
- > The degree to which these principles are pursued strongly correlates to the confidence
- > we can have in a distributed system at scale.
+ > The [advanced] principles describe an ideal application of Chaos Engineering
+ > [...] The degree to which these principles are pursued strongly correlates to
+ > the confidence we can have in a distributed system at scale.
 
 The main principle we're interested in today is described as follows:
 
- > Running experiments manually is labor-intensive and ultimately unsustainable. Automate
- > experiments and run them continuously. Chaos Engineering builds automation into the system
- > to drive both orchestration and analysis.
+ > Running experiments manually is labor-intensive and ultimately unsustainable.
+ > Automate experiments and run them continuously. Chaos Engineering builds automation
+ > into the system to drive both orchestration and analysis.
 
 In short, the Principles suggestion of automating experiments (that are currently manual) to run in a continual fashion (taking out the Human error) in order to add a compounding increase of confidence in our systems. Thankfully not only does Netflix tell us what to do but gives us a remarkable tool in order to put this theory into practice, which is __Chaos Monkey__.
 
 
-#### One surly ape
+#### One Surly Simian
+
+Chaos Monkey, which is by now the most famous member of Netflix's Simian Army. It is by fact the first of it's kind and was until recently the only thing of its kind that was publicly available (though now Azure has it's own version called [Search Chaos Monkey](http://azure.microsoft.com/blog/2015/07/01/inside-azure-search-chaos-engineering/) or by implementing [it's own failure testing](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-testability-scenarios) and Google has a retrofit for [Spinnaker](https://blog.spinnaker.io/running-chaos-monkey-on-spinnaker-google-compute-engine-gce-155dc52f20ef)). Broadly speaking, Chaos Monkey randomly terminates compute instances on a cloud platform. Here is a more thorough description on Netflix's blog outlined here:
+
+ > [Chaos Monkey is] a tool that randomly disables our production instances to
+ > make sure we can survive this common type of failure without any customer impact.
+ > The name comes from the idea of unleashing a wild monkey with a weapon in your
+ > data center (or cloud region) to randomly shoot down instances and chew through
+ > cables - all the while we continue serving our customers without interruption.
+
+The article then continues:
+
+ > By running Chaos Monkey in the middle of a business day, in a carefully
+ > monitored environment with engineers standing by to address any problems, we
+ > can still learn the lessons about the weaknesses of our system, and build
+ > automatic recovery mechanisms to deal with them. So next time an instance
+ > fails at 3 am on a Sunday, we won’t even notice.
+
+Cool story bro, but how do we implement Chaos Monkey ourselves?
+
+
+#### Containerizing the Army
+
+I spent several hours and dockerized the Simian Army. This a Java application with a multitude of settings to make it as simple as possible to use Chaos Monkey. The result is a highly configurable Docker image which provides a sound basis for automating chaos experiments.
