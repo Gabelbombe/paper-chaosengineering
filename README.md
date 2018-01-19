@@ -74,3 +74,14 @@ Briefly, here are the steps involved in conducting chaos experiments. This list 
  4. For every flaw uncovered compile a counter-measure list. Don't worry about immediate implementation for fixes, we are compiling a log at this point! Add any follow-up items to your issue tracker.
 
 Rinse and repeat, we should be running our experiments on a regular basis (I recommend quarterly at the minimum) to detect regressions as well as newly surfaced issues. Don't forget to bring your spreadsheet. :wink:
+
+
+#### Moving further into Chaos
+
+At this point we should have a good understanding of why we need to implement failures proactively (in a controlled manner, of course) in order to gain confidence in our systems. We should also understand that chaos engineering will enable us to verify that things will behave as expected or to fix them when they don't. As we advance you will discover that automating a manual process will be a key success criteria, ensuring a stable and robust platform in which to ply our wares. Though I still believe that manual testing can be at the forefront of this, which can be as simple as terminating a process with the `kill` command. This tends to be the easiest approach to get familiar with the concept of fault injection and to gradually establish the right mindset.
+
+As outlined in the previously mentioned article [The Principles of Chaos Engineering](http://principlesofchaos.org/) there are four advanced principles that should be observed. This paper states:
+
+ > The [advanced] principles describe an ideal application of Chaos Engineering […]
+ > The degree to which these principles are pursued strongly correlates to the confidence
+ > we can have in a distributed system at scale.
