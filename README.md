@@ -1,6 +1,6 @@
 # Chaos Engineering for Fun and Profit
 
-![Let Chaos Reign](https://raw.githubusercontent.com/ehime/paper-chaos/master/assets/chaos.jpg "Let Chaos Reign")
+![Let Chaos Reign](https://raw.githubusercontent.com/ehime/paper-chaosengineering/master/assets/chaos.jpg "Let Chaos Reign")
 
 So lets say you're developing a new web application, that _Next Big Thing_ that's had everyone on the edges of their seats forever. After all the tireless work you've put in, sleepless nights debugging and refining.. It's finally time to launch your service to your would be clientele. Now comes the hard question...
 
