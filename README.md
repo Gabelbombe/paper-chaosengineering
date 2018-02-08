@@ -119,4 +119,4 @@ Cool story bro, but how do we implement Chaos Monkey ourselves?
 
 #### Containerizing the Army
 
-I spent several hours and dockerized the Simian Army. This a Java application with a multitude of settings to make it as simple as possible to use Chaos Monkey. The result is a highly configurable Docker image which provides a sound basis for automating chaos experiments.
+I spent several hours and dockerized the Simian Army. This a Java application with a multitude of settings to make it as simple as possible to use Chaos Monkey. The result is a [highly configurable Docker image](https://github.com/ehime/docker-monkeymagic/blob/master/README.md) which provides a sound basis for automating chaos experiments.
