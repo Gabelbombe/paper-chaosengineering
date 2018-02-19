@@ -112,11 +112,40 @@ The article then continues:
  > monitored environment with engineers standing by to address any problems, we
  > can still learn the lessons about the weaknesses of our system, and build
  > automatic recovery mechanisms to deal with them. So next time an instance
- > fails at 3 am on a Sunday, we won’t even notice.
+ > fails at 3 am on a Sunday, we won't even notice.
 
 Cool story bro, but how do we implement Chaos Monkey ourselves?
 
 
-#### Containerizing the Army
+#### The Next Level of Chaos
 
-I spent several hours and dockerized the Simian Army. This a Java application with a multitude of settings to make it as simple as possible to use Chaos Monkey. The result is a [highly configurable Docker image](https://github.com/ehime/docker-monkeymagic/blob/master/README.md) which provides a sound basis for automating chaos experiments.
+I spent several hours and containerized the Simian Army. This a Java application with a multitude of settings to make it as simple as possible to use Chaos Monkey. The result is a [highly configurable Docker image](https://github.com/ehime/docker-monkeymagic/blob/master/README.md) which provides a sound basis for automating chaos experiments. Above, I argued that we don't need to automate chaos experiments when you're just getting started. I still think that manual testing, which can be as simple as terminating a process with the kill command is the easiest way to get familiar with the concept of fault injection and to gradually establish the right mindset.
+
+Here is an example command to start our Docker container running the Simian Army and instruct Chaos Monkey to consider all auto scaling groups (ASGs) in the given AWS account for termination:
+
+```bash
+docker run -it --rm                                           \
+  -e SIMIANARMY_CLIENT_AWS_ACCOUNTKEY=${AWS_ACCESS_KEY_ID}    \
+  -e SIMIANARMY_CLIENT_AWS_SECRETKEY=${AWS_SECRET_ACCESS_KEY} \
+  -e SIMIANARMY_CLIENT_AWS_REGION=${AWS_REGION}               \
+  -e SIMIANARMY_CALENDAR_ISMONKEYTIME=true                    \
+  -e SIMIANARMY_CHAOS_ASG_ENABLED=true                        \
+ehime/monkeymagic
+```
+
+Our above example is **safe** to run as Chaos Monkey will operate in dry-run mode by default. It’s a good way for getting a feeling of the application without taking a risk.
+
+The below example is more _realistic_ and could very well be your first chaos experiment to run continuously. This time, Chaos Monkey will randomly terminate instances of the auto scaling groups tagged with a specific key-value pair:
+
+```bash
+docker run -it --rm                                           \
+  -e SIMIANARMY_CLIENT_AWS_ACCOUNTKEY=${AWS_ACCESS_KEY_ID}    \
+  -e SIMIANARMY_CLIENT_AWS_SECRETKEY=${AWS_SECRET_ACCESS_KEY} \
+  -e SIMIANARMY_CLIENT_AWS_REGION=${AWS_REGION}               \
+  -e SIMIANARMY_CALENDAR_ISMONKEYTIME=true                    \
+  -e SIMIANARMY_CHAOS_ASG_ENABLED=true                        \
+  -e SIMIANARMY_CHAOS_ASGTAG_KEY=chaos_monkey                 \
+  -e SIMIANARMY_CHAOS_ASGTAG_VALUE=true                       \
+  -e SIMIANARMY_CHAOS_LEASHED=false                           \
+ehime/monkeymagic
+```
