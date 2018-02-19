@@ -133,7 +133,7 @@ docker run -it --rm                                           \
 ehime/monkeymagic
 ```
 
-Our above example is **safe** to run as Chaos Monkey will operate in dry-run mode by default. It’s a good way for getting a feeling of the application without taking a risk.
+Our above example is **safe** to run as Chaos Monkey will operate in dry-run mode by default. It's a good way for getting a feeling of the application without taking a risk.
 
 The below example is more _realistic_ and could very well be your first chaos experiment to run continuously. This time, Chaos Monkey will randomly terminate instances of the auto scaling groups tagged with a specific key-value pair:
 
@@ -150,6 +150,23 @@ docker run -it --rm                                           \
 ehime/monkeymagic
 ```
 
-Note that this command will actually _unleash the monkey_. But don’t worry: you still need to tag your ASGs accordingly for any instances to be killed.
+Note that this command will actually _unleash the monkey_. But don't worry: you still need to tag your ASGs accordingly for any instances to be killed.
 
-There are many more [configuration settings](https://github.com/ehime/docker-monkeymagic/blob/master/docs/configuration.md) you can pass to the Docker image, including ones to control frequency, probability, and type of terminations. Also, you can (and should) configure Chaos Monkey to send email notifications about terminations. I encourage you to [rtfm](https://github.com/ehime/docker-monkeymagic/blob/master/README.md) to learn more.
+There are many more [configuration settings](https://github.com/ehime/docker-monkeymagic/blob/master/docs/configuration.md) you can pass to the Docker image, including ones to control frequency, probability, and type of terminations. Also, you can (and should) configure Chaos Monkey to send email notifications about terminations. I encourage you to [RTFM](https://github.com/ehime/docker-monkeymagic/blob/master/README.md) to learn more.
+
+As always, it's a good idea to **start small**. I strongly recommend testing Chaos Monkey in a `staging environment` before unleashing it in `production`.
+
+This paper wasn't meant to be a comprehensive guide on operating Chaos Monkey in production. However, I want to at least mention that observability through monitoring and other means, is extremely important when it comes to chaos experiments. This is even more so true when they're automated. We want to eliminate customer impact as quickly as possible.
+
+
+### Manual versus Automated fault injection
+
+Now that running Chaos Monkey is only a single command away, should we stop manual testing altogether?
+
+The answer is _hahaha, hell no!_
+
+Chaos Monkey is a useful tool to discover weaknesses in your systems caused by various kinds of instance failures, failures that you'd otherwise have to inject manually (or by developing your own tools).
+
+GameDay events, on the other hand, bring the whole team together to think about failure modes and conduct chaos experiments, which is ideal to transfer knowledge and foster a shared mindset. It might also be the only way to test more complex scenarios that are hard or impossible to automate.
+
+That being said, both manual and automated fault injection are valuable - and both have limitations. Please continue to apply these two approaches and share your experiences with me!
