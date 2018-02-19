@@ -149,3 +149,7 @@ docker run -it --rm                                           \
   -e SIMIANARMY_CHAOS_LEASHED=false                           \
 ehime/monkeymagic
 ```
+
+Note that this command will actually _unleash the monkey_. But don’t worry: you still need to tag your ASGs accordingly for any instances to be killed.
+
+There are many more [configuration settings](https://github.com/ehime/docker-monkeymagic/blob/master/docs/configuration.md) you can pass to the Docker image, including ones to control frequency, probability, and type of terminations. Also, you can (and should) configure Chaos Monkey to send email notifications about terminations. I encourage you to [rtfm](https://github.com/ehime/docker-monkeymagic/blob/master/README.md) to learn more.
